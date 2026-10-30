@@ -1,0 +1,19 @@
+{
+  "name": "ecommerce-microservices",
+  "version": "1.0.0",
+  "description": "Plateforme E-Commerce en architecture Microservices (Node.js, Express, React)",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install && cd services/api-gateway && npm install && cd ../auth-service && npm install && cd ../product-service && npm install && cd ../order-service && npm install && cd ../payment-service && npm install && cd ../../frontend && npm install",
+    "start:gateway": "cd services/api-gateway && npm run dev",
+    "start:auth": "cd services/auth-service && npm run dev",
+    "start:product": "cd services/product-service && npm run dev",
+    "start:order": "cd services/order-service && npm run dev",
+    "start:payment": "cd services/payment-service && npm run dev",
+    "start:frontend": "cd frontend && npm run dev",
+    "dev": "concurrently -n \"GATEWAY,AUTH,PRODUCT,ORDER,PAYMENT,FRONTEND\" -c \"magenta,blue,green,yellow,cyan,red\" \"npm run start:gateway\" \"npm run start:auth\" \"npm run start:product\" \"npm run start:order\" \"npm run start:payment\" \"npm run start:frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
